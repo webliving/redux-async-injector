@@ -1,0 +1,30 @@
+{
+  "name": "redux-async-injector",
+  "version": "1.0.0",
+  "description": "redux 异步加载",
+  "main": "redux-async-injector",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webliving/redux-async-injector.git"
+  },
+  "keywords": [
+    "redux",
+    "react"
+  ],
+  "author": "webliving",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webliving/redux-async-injector/issues"
+  },
+  "homepage": "https://github.com/webliving/redux-async-injector#readme",
+  "devDependencies": {
+    
+  },
+  "dependencies": {
+    "lodash": "^4.15.0",
+    "redux": "^3.0.2"
+  }
+}
