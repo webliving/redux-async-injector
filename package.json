@@ -5,7 +5,8 @@
   "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel ./src --ignore=*.spec.js --out-dir ./build --presets es2015,react,stage-2"
+    "build": "babel ./src --ignore=*.spec.js --out-dir ./build --presets es2015,react,stage-2",
+    "release-patch": "standard-version --release-as patch"
   },
   "repository": {
     "type": "git",
