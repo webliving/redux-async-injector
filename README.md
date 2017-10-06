@@ -26,17 +26,17 @@ var createInjectStore = require('redux-async-injector').createInjectStore;
 ### 创建 redux store
 应用的redux数据的创建
 
-#### 1.  是否你的reducer配置类似这样?
+#### 1. 你应该不需要做什么,大体上你的reducer配置都类似这样?
 ```javascript
 let reducersObject = {
-  router: routerReducerFunction,
+  menuList: menuListReducerFn,
   data: {
-    user: userReducerFunction,
+    user: userReducerFn,
     auth: {
-      loggedIn: loggedInReducerFunction,
-      loggedOut: loggedOutReducerFunction
+      loggedIn: loggedInReducerFn,
+      loggedOut: loggedOutReducerFn
     },
-    info: infoReducerFunction
+    info: infoReducerFn
   }
 };
 ```
@@ -52,11 +52,11 @@ let store = createInjectStore(
 ```
 
 ### 注入新的 reducer
-在你的 redux store 创建之后, 你可以在任何合理的地方,简单的注入新的 reducer
+在 redux store 创建之后, 你可以在任何合理的地方,简单的注入新的 reducer
 ```javascript
 import { injectReducer } from 'redux-async-injector';
 
-injectReducer('store.form', formReducerFunction);
+injectReducer('store.form', formReducerFn);
 ```
 
 ## License

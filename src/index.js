@@ -1,5 +1,7 @@
-import { createStore, combineReducers } from 'redux';
+
 import _ from 'lodash';
+import { createStore, combineReducers } from 'redux';
+
 
 let store = window.store || {}; // 修复单元测试时的注入错误
 let combine = combineReducers;
@@ -9,7 +11,7 @@ function combineReducersRecurse(reducers) {
   if (typeof reducers === 'function') {
     return reducers;
   }
-  // If this is an object of functions, combine reducers.
+  // 如果reducers为对象, 则遍历联合
   if (typeof reducers === 'object') {
     let combinedReducers = {};
 
