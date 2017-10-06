@@ -14,10 +14,10 @@ npm install --save redux-async-injector
 然后, 使用你中意的:heart_decoration:一种引用方法使用本模块 :
 ```javascript
 // using an ES6 transpiler, like babel
-import { createInjectStore } from 'redux-injector';
+import { createInjectStore } from 'redux-async-injector';
 
 // not using an ES6 transpiler
-var createInjectStore = require('redux-injector').createInjectStore;
+var createInjectStore = require('redux-async-injector').createInjectStore;
 ```
 
 ## 使用
