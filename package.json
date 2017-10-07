@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel ./src --ignore=*.spec.js --out-dir ./build --presets es2015,react,stage-2",
+    "release": "standard-version",
+    "release-next": "standard-version --prerelease next",
+    "release-major": "standard-version --release-as major",
+    "release-minor": "standard-version --release-as minor",
     "release-patch": "standard-version --release-as patch"
   },
   "repository": {
