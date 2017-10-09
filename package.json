@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "test": "mocha test/*",
-    "testBabel": "mocha test/* --compilers js:babel-core/register --recursive",
+    "testBabel": "mocha test/* --compilers js:babel-core/register --recursive --bail",
     "test1": "echo \"Error: no test specified\" && exit 1",
     "build": "babel ./src --ignore=*.spec.js --out-dir ./build --presets es2015,react,stage-2",
     "release": "standard-version",
@@ -29,7 +29,6 @@
   },
   "homepage": "https://github.com/webliving/redux-async-injector#readme",
   "devDependencies": {
-    "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-polyfill": "^6.26.0",
@@ -38,7 +37,9 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
     "mocha": "^4.0.1",
+    "mochawesome": "^2.3.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },

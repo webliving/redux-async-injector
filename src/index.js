@@ -4,7 +4,8 @@ import _ from 'lodash';
 import { createStore, combineReducers } from 'redux';
 
 
-let store = window.store || {}; // 修复单元测试时的注入错误
+let store =  {}; // 修复单元测试时的注入错误
+// let store = window.store || {}; // 修复单元测试时的注入错误
 let combine = combineReducers;
 
 function combineReducersRecurse(reducers) {

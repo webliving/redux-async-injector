@@ -9,15 +9,16 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 exports.createInjectStore = createInjectStore;
 exports.injectReducer = injectReducer;
 
-var _redux = require('redux');
-
 var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
+var _redux = require('redux');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var store = window.store || {}; // 修复单元测试时的注入错误
+var store = {}; // 修复单元测试时的注入错误
+// let store = window.store || {}; // 修复单元测试时的注入错误
 var combine = _redux.combineReducers;
 
 function combineReducersRecurse(reducers) {
@@ -25,38 +26,13 @@ function combineReducersRecurse(reducers) {
   if (typeof reducers === 'function') {
     return reducers;
   }
-  // If this is an object of functions, combine reducers.
+  // 如果reducers为对象, 则遍历联合
   if ((typeof reducers === 'undefined' ? 'undefined' : _typeof(reducers)) === 'object') {
     var combinedReducers = {};
-    // forEach
-    /*_.forEach(reducers, function (value, key) {
+
+    _lodash2.default.forEach(reducers, function (value, key) {
       combinedReducers[key] = combineReducersRecurse(reducers[key]);
-    });*/
-
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
-
-    try {
-      for (var _iterator = Object.keys(reducers)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var key = _step.value;
-
-        combinedReducers[key] = combineReducersRecurse(reducers[key]);
-      }
-    } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return) {
-          _iterator.return();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
-      }
-    }
+    });
 
     return combine(combinedReducers);
   }
@@ -87,7 +63,6 @@ function createInjectStore(initialReducers) {
 function injectReducer(key, reducer) {
   var force = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-  // If already set, do nothing.
   // console.log('store.injectedReducers', store.injectedReducers);
   // console.log('key', key);
   if (_lodash2.default.has(store.injectedReducers, key) || force) return store;
