@@ -1,0 +1,6 @@
+--require 'test/init.js'
+--compilers js:babel-core/register
+--bail
+--recursive
+--reporter html
+test/*.spec.js

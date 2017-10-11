@@ -17,6 +17,12 @@ var _redux = require('redux');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var name = 'hello';
+var abc = _defineProperty({}, name, 'JavaScript');
+console.log('abc', abc);
+
 var store = {}; // 修复单元测试时的注入错误
 // let store = window.store || {}; // 修复单元测试时的注入错误
 var combine = _redux.combineReducers;

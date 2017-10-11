@@ -4,10 +4,15 @@
   "description": "redux 异步加载",
   "main": "build/index.js",
   "scripts": {
-    "test": "mocha test/*",
-    "testBabel": "mocha test/* --compilers js:babel-core/register --recursive --bail",
+    "test": "./node_modules/.bin/babel-node ./node_modules/.bin/babel-istanbul cover --report text --report html ./node_modules/.bin/_mocha",
+    "test2": "./node_modules/.bin/isparta cover --report text --report html mocha -- --compilers js:babel-core/register",
+    "testBabel": "mocha --compilers js:babel-core/register",
+
     "test1": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel ./src --ignore=*.spec.js --out-dir ./build --presets es2015,react,stage-2",
+    "build": "babel ./src --ignore=*.spec.js --out-dir ./build ",
+
+    "prerelease-patch": "npm run build",
+
     "release": "standard-version",
     "release-next": "standard-version --prerelease next",
     "release-major": "standard-version --release-as major",
@@ -31,6 +36,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-istanbul": "^0.12.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
@@ -38,6 +44,10 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
+    "isparta": "^4.0.0",
+    "istanbul": "^0.4.5",
+    "jsdom": "11.3.0",
+    "jsdom-global": "3.0.2",
     "mocha": "^4.0.1",
     "mochawesome": "^2.3.1",
     "react": "^15.5.4",
