@@ -1,10 +1,9 @@
-
-
 import _ from 'lodash';
-import { createStore, combineReducers } from 'redux';
+import {combineReducers, createStore} from 'redux';
 
-
-let store = window.store || {}; // 修复单元测试时的注入错误
+/* istanbul ignore next  */
+let store = typeof window !== 'undefined' ? window.store || {} : {}; // 修复单元测试时的注入错误
+// let store = {}; // 修复单元测试时的注入错误
 let combine = combineReducers;
 
 function combineReducersRecurse(reducers) {
@@ -13,7 +12,8 @@ function combineReducersRecurse(reducers) {
     return reducers;
   }
   // 如果reducers为对象, 则遍历联合
-  if (typeof reducers === 'object') {
+  /* istanbul ignore else  */
+  if (reducers instanceof Object) {
     let combinedReducers = {};
 
     _.forEach(reducers, function (value, key) {
@@ -41,11 +41,12 @@ export function createInjectStore(initialReducers, ...args) {
   store = createStore(
     combineReducersRecurse(initialReducers),
     ...args
-);
+  );
   store.injectedReducers = initialReducers;
   return store;
 }
-export function injectReducer(key, reducer, force = false) {
+
+export function injectReducer(key, reducer, force) {
   // console.log('store.injectedReducers', store.injectedReducers);
   // console.log('key', key);
   if (_.has(store.injectedReducers, key) || force) return store;
